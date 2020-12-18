@@ -23,7 +23,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Giphy Scroller</h1>
+        <h1>Giphy scroller</h1>
       </header>
       <Search handleChange={handleChange} defaultValue="search giphy..." handleSearch={handleSearch} />
       <Gallery endpoint={endpoint.current} gifs={gifs} setGifs={setGifs} query={search}/>
