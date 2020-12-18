@@ -29,7 +29,7 @@ const Gallery = ({ endpoint, query, gifs, setGifs }) => {
 
     useEffect(() => {
         loadGifs()
-    }, [endpoint, query])
+    }, [])
 
     return (
         <div className={classes.wrapper}>
