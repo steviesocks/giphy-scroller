@@ -2,24 +2,34 @@ import React, { useState, useRef, useEffect } from 'react'
 import './App.css';
 import Gallery from './components/gallery/gallery.component';
 import Search from './components/search/search.component';
+import Modal from './components/modal/modal.component';
 
 import { getAPI } from './utils/api';
+
+const INITIAL_MODAL_STATE = {images: {original: {}}}
 
 const App = () => {
 
   const offset = useRef(0);
-  const endpoint = useRef("trending")
-  console.log('offset', offset.current)
+  const location = useRef({endpoint: "trending", query: ""})
 
   const [search, setSearch] = useState("")
   const [gifs, setGifs] = useState([])
   const [url, setUrl] = useState(`https://api.giphy.com/v1/gifs/trending?api_key=KU304SCxltM7TA3lecV28vBV0Rv4A5XE&limit=9`)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalContent, setModalContent] = useState(INITIAL_MODAL_STATE)
 
-  console.log(search)
+  console.log("gifs", gifs)
 
   const handleChange = (event) => {
     const { value } = event.target;
     setSearch(value)
+  }
+
+  const handleEnterKey = (event) => {
+    if (event.charCode === 13) {
+      handleSearch()
+    }
   }
 
   const handleSearch = async () => {
@@ -31,8 +41,21 @@ const App = () => {
             .catch(error => console.log(error))
 
     offset.current = 9
-    endpoint.current = "search"
+    location.current = {endpoint: "search", query: search}
 
+  }
+
+  const handleModalClose = (event) => {
+    if (event.target.id === "modal") {
+      setModalOpen(false)
+      setModalContent(INITIAL_MODAL_STATE)
+    }
+  }
+
+  const handleGifClick = (event) => {
+    const { id } = event.target
+    setModalContent(gifs.find(item => item.id === id))
+    setModalOpen(true)
   }
 
   useEffect(() => {
@@ -48,7 +71,7 @@ const App = () => {
       <header className="App-header">
         <h1>Giphy scroller</h1>
       </header>
-      <Search handleChange={handleChange} defaultValue="search giphy..." handleSearch={handleSearch} />
+      <Search handleChange={handleChange} placeholder="search giphy..." handleSearch={handleSearch} handleEnterKey={handleEnterKey} />
       <Gallery 
         url={url} 
         setUrl={setUrl} 
@@ -56,11 +79,13 @@ const App = () => {
         gifs={gifs} 
         setGifs={setGifs} 
         title={
-            endpoint.current === "trending" ?
+            location.current.endpoint === "trending" ?
               "what's trending now" :
-              `top results for "${search}"`
+              `top results for "${location.current.query}"`
           }
-        />
+        handleGifClick={handleGifClick}
+      />
+      <Modal handleClose={handleModalClose} open={modalOpen} source={modalContent} />
     </div>
   );
 }

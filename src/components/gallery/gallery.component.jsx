@@ -2,15 +2,14 @@ import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { getAPI } from '../../utils/api';
+import { getSource } from '../../utils/utils';
 import GifCard from '../gifCard/gif-card.component';
 
 import useStyles from './gallery.styles';
 
-const Gallery = ({ url, offset, gifs, setGifs, title }) => {
+const Gallery = ({ url, offset, gifs, setGifs, title, handleGifClick }) => {
 
     const classes = useStyles();
-    console.log('gifs', gifs)
-    console.log("url", url)
 
     const loadGifs = async () => {
 
@@ -39,22 +38,20 @@ const Gallery = ({ url, offset, gifs, setGifs, title }) => {
                                     const { images } = item;
 
                                     if (images.fixed_height.width < images.fixed_height.height) {
-
+                                        const source = getSource(images.fixed_width)
                                         return (
-                                            <GifCard src={images.fixed_width.mp4} key={item.id} id={item.id} />
+                                            <GifCard source={source} key={item.id} id={item.id} handleClick={handleGifClick} />
                                         )
                                     }
-
+                                    const source = getSource(images.fixed_height)
                                     return (
-                                        <GifCard src={images.fixed_height.mp4} key={item.id} id={item.id} />
+                                        <GifCard source={source} key={item.id} id={item.id} handleClick={handleGifClick} />
                                     )
-
                                 })
                                 : null
                         }
                     </div>
                 </InfiniteScroll>
-
             </div>
         </div>
     )
