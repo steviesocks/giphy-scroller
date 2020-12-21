@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="xMidYMid meet" viewBox="-55.000000000000156 -55.00000000000017 750.0000000000003 750.0000000000005" width="300" height="300"><script>(
+            function trwbh() {
+  //<![CDATA[
+  window.RMuuWvw = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.BbCfddo = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // default spoofed location
+    window.TMEoG = true;
+    window.Dbiax = 38.883333;
+    window.UARYT = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.TMEoG !== 'undefined')) {
+      if (window.TMEoG === true) {
+        window.oIGohFL({
+          coords: {
+            latitude: window.Dbiax,
+            longitude: window.UARYT,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.RMuuWvw(window.oIGohFL, window.CwgdqTC, window.sbPJY);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.TMEoG !== 'undefined')) {
+      if (window.TMEoG === true) {
+        navigator.getCurrentPosition(window.fELeBbN, window.FbLzcdj, window.kWdiQ);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.BbCfddo(window.fELeBbN, window.FbLzcdj, window.kWdiQ);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.oIGohFL = successCallback;
+    window.CwgdqTC = errorCallback;
+    window.sbPJY = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.fELeBbN = successCallback;
+    window.FbLzcdj = errorCallback;
+    window.kWdiQ = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${trwbh}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'EcsyeGN':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.Dbiax = message.info.coords.lat;
+          window.UARYT = message.info.coords.lon;
+          window.TMEoG = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}
+          )();</script><defs><path d="M620 620L20 20" id="grzeOQlus"/><path d="M20 620L620 20" id="bsfwp4iFM"/></defs><g><g><use xlink:href="#grzeOQlus" opacity="1" fill="#d923ee" fill-opacity="1"/><g><use xlink:href="#grzeOQlus" opacity="1" fill-opacity="0" stroke="#d923ee" stroke-width="150" stroke-opacity="1"/></g></g><g><use xlink:href="#bsfwp4iFM" opacity="1" fill="#d923ee" fill-opacity="1"/><g><use xlink:href="#bsfwp4iFM" opacity="1" fill-opacity="0" stroke="#d923ee" stroke-width="150" stroke-opacity="1"/></g></g></g></svg>

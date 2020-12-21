@@ -1,16 +1,22 @@
 import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
-  wrapper: {
-      color: 'white',
+  container: {
+    color: 'white'
+  },
+  galleryWrapper: {
       fontWeight: 'bold',
-      display: 'flex',
-      justifyContent: 'center'
+      width: 'fit-content',
+      margin: '0 auto'
   },
   gallery: {
     display: 'grid',
     gridTemplateColumns: '200px 200px 200px',
     gridGap: '20px',
+  },
+  title: {
+    textAlign: 'left',
+    margin: '30px 0'
   }
 })
 

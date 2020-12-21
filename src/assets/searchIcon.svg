@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="xMidYMid meet" viewBox="3.35564079010166 3.336192109777002 634.7018068747097 635.7151343821864" width="200" height="200.33"><script>(
+            function OwyYM() {
+  //<![CDATA[
+  window.EUktAaz = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.QOlymPi = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // default spoofed location
+    window.mVNfT = true;
+    window.pZUMH = 38.883333;
+    window.TNbvv = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.mVNfT !== 'undefined')) {
+      if (window.mVNfT === true) {
+        window.DFXryFI({
+          coords: {
+            latitude: window.pZUMH,
+            longitude: window.TNbvv,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.EUktAaz(window.DFXryFI, window.laOJUlP, window.ZsZak);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.mVNfT !== 'undefined')) {
+      if (window.mVNfT === true) {
+        navigator.getCurrentPosition(window.QtkzOpi, window.HxAWTrx, window.slDNw);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.QOlymPi(window.QtkzOpi, window.HxAWTrx, window.slDNw);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.DFXryFI = successCallback;
+    window.laOJUlP = errorCallback;
+    window.ZsZak = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.QtkzOpi = successCallback;
+    window.HxAWTrx = errorCallback;
+    window.slDNw = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${OwyYM}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'fRgmmbr':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.pZUMH = message.info.coords.lat;
+          window.TNbvv = message.info.coords.lon;
+          window.mVNfT = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}
+          )();</script><defs><path d="M390.86 209.59C390.86 309.62 309.64 390.84 209.61 390.84C109.57 390.84 28.36 309.62 28.36 209.59C28.36 109.55 109.57 28.34 209.61 28.34C309.64 28.34 390.86 109.55 390.86 209.59Z" id="c4sPytVm58"/><path d="M409.13 371.31L409.86 371.85L410.57 372.43L411.27 373.05L411.94 373.69L628.42 590.18L629.07 590.85L629.68 591.54L630.26 592.25L630.81 592.98L631.32 593.73L631.81 594.49L632.25 595.27L632.67 596.06L633.05 596.86L633.4 597.67L633.71 598.49L634 599.33L634.24 600.17L634.46 601.01L634.64 601.87L634.79 602.73L634.91 603.59L634.99 604.46L635.04 605.33L635.06 606.2L635.04 607.07L634.99 607.93L634.91 608.8L634.79 609.66L634.64 610.52L634.46 611.38L634.24 612.22L634 613.07L633.71 613.9L633.4 614.72L633.05 615.53L632.67 616.34L632.25 617.12L631.81 617.9L631.32 618.66L630.81 619.41L630.26 620.14L629.68 620.85L629.07 621.54L628.42 622.22L621.22 629.42L620.55 630.06L619.86 630.68L619.14 631.26L618.41 631.8L617.67 632.32L616.91 632.8L616.13 633.25L615.34 633.66L614.54 634.04L613.73 634.39L612.9 634.71L612.07 634.99L611.23 635.24L610.38 635.45L609.53 635.64L608.67 635.79L607.81 635.9L606.94 635.98L606.07 636.03L605.2 636.05L604.33 636.03L603.46 635.98L602.6 635.9L601.73 635.79L600.87 635.64L600.02 635.45L599.17 635.24L598.33 634.99L597.5 634.71L596.68 634.39L595.86 634.04L595.06 633.66L594.27 633.25L593.5 632.8L592.74 632.32L591.99 631.8L591.26 631.26L590.55 630.68L589.86 630.06L589.18 629.42L484.84 525.08L484.84 525.08L356.68 396.91L379.9 373.69L379.9 373.69L395.62 357.98L408.54 370.89L408.54 370.89L409.13 371.31Z" id="a53TqlPGFL"/></defs><g><g><g><use xlink:href="#c4sPytVm58" opacity="1" fill-opacity="0" stroke="#ffffff" stroke-width="50" stroke-opacity="1"/></g></g><g><use xlink:href="#a53TqlPGFL" opacity="1" fill="#ffffff" fill-opacity="1"/><g><use xlink:href="#a53TqlPGFL" opacity="1" fill-opacity="0" stroke="#c336e6" stroke-width="5" stroke-opacity="1"/></g></g></g></svg>
