@@ -3,10 +3,16 @@ import { getSource } from '../../utils/utils.js';
 
 import useStyles from './modal.styles.js'
 
+import IconButton from '../icon-button/icon-button.component';
+
 const Modal = ({ handleClose, open, source }) => {
 
     const classes = useStyles();
-    const { src, type } = getSource(source.images.original)
+    const { src, type, url } = getSource(source.images.original)
+
+    const handleClickShare = () => {
+        navigator.clipboard.writeText(url)
+    }
 
     return (
         <div id="modal" className={classes.modal} onClick={handleClose} style={open ? null : { display: 'none' }}>
@@ -20,7 +26,11 @@ const Modal = ({ handleClose, open, source }) => {
                             :
                             <img src={src} alt="whoops" />
                     }
-                    <h2>{source.title}</h2>
+                    <div className={classes.info}>
+                        <h3>{source.title}</h3>
+                        <IconButton handleClick={handleClickShare} message="Copied!"/>
+                    </div>
+
                 </div>
             </div>
         </div>

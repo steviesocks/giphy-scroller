@@ -3,7 +3,7 @@ import useStyles from './search.styles';
 
 import icon from '../../assets/searchIcon.svg';
 
-const Search = ({ handleChange, placeholder, handleSearch, handleEnterKey }) => {
+const Search = ({ handleChange, placeholder, handleSearch, handleEnterKey, value }) => {
 
     const classes = useStyles()
 
@@ -14,6 +14,7 @@ const Search = ({ handleChange, placeholder, handleSearch, handleEnterKey }) => 
                 placeholder={placeholder} 
                 onChange={handleChange} 
                 onKeyPress={handleEnterKey}
+                value={value}
                 />
             <button className={classes.button} onClick={handleSearch}>
                 <img src={icon} alt="go" height="30px" />

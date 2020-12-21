@@ -23,9 +23,13 @@ const useStyles = createUseStyles({
         margin: '20px',
         display: 'grid',
         gridTemplateColumns: '3fr 2fr',
+        gridTemplateRows: '100px 50px 50px 50px 50px',
         gridGap: '20px',
         justifyItems: 'center'
-    }
+    },
+    info: {
+        textAlign: 'left',
+    }    
 });
 
 export default useStyles;

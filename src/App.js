@@ -7,6 +7,8 @@ import Modal from './components/modal/modal.component';
 import { getAPI } from './utils/api';
 
 const INITIAL_MODAL_STATE = {images: {original: {}}}
+const TRENDING_ENDPOINT = `https://api.giphy.com/v1/gifs/trending?api_key=KU304SCxltM7TA3lecV28vBV0Rv4A5XE&limit=9`
+const SEARCH_ENDPOINT = `https://api.giphy.com/v1/gifs/search`
 
 const App = () => {
 
@@ -19,7 +21,7 @@ const App = () => {
   const [modalOpen, setModalOpen] = useState(false)
   const [modalContent, setModalContent] = useState(INITIAL_MODAL_STATE)
 
-  console.log("gifs", gifs)
+  console.log(gifs)
 
   const handleChange = (event) => {
     const { value } = event.target;
@@ -33,16 +35,24 @@ const App = () => {
   }
 
   const handleSearch = async () => {
-    const newUrl = `https://api.giphy.com/v1/gifs/search?q=${search}&api_key=KU304SCxltM7TA3lecV28vBV0Rv4A5XE&limit=9`
-    setUrl(newUrl)
+    const newUrl = `${SEARCH_ENDPOINT}?q=${search}&api_key=KU304SCxltM7TA3lecV28vBV0Rv4A5XE&limit=9`
+    handleNewEndpoint(newUrl, "search", search)
+  }
 
+  const handleTrending = async () => {
+    const newUrl = TRENDING_ENDPOINT
+    handleNewEndpoint(newUrl, "trending", "")
+  }
+
+  const handleNewEndpoint = (newUrl, endpoint, query) => {
+    setUrl(newUrl)
+    setSearch(query)
     getAPI(`${newUrl}&offset=0`)
             .then(response => setGifs([...response.data]))
             .catch(error => console.log(error))
 
     offset.current = 9
-    location.current = {endpoint: "search", query: search}
-
+    location.current = {endpoint, query}
   }
 
   const handleModalClose = (event) => {
@@ -59,7 +69,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    getAPI(`https://api.giphy.com/v1/gifs/trending?api_key=KU304SCxltM7TA3lecV28vBV0Rv4A5XE&limit=9&offset=0`)
+    getAPI(TRENDING_ENDPOINT)
             .then(response => setGifs([...response.data]))
             .catch(error => console.log(error))
 
@@ -69,9 +79,9 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Giphy scroller</h1>
+        <h1 className="h1" onClick={handleTrending}>Giphy scroller</h1>
       </header>
-      <Search handleChange={handleChange} placeholder="search giphy..." handleSearch={handleSearch} handleEnterKey={handleEnterKey} />
+      <Search handleChange={handleChange} placeholder="search giphy..." handleSearch={handleSearch} handleEnterKey={handleEnterKey} value={search} />
       <Gallery 
         url={url} 
         setUrl={setUrl} 

@@ -17,18 +17,21 @@ export const getSource = (imageObject) => {
     if (imageObject.mp4) {
       return {
         type: "mp4",
-        src: imageObject.mp4
+        src: imageObject.mp4,
+        url: imageObject.url
       }
     } else if (imageObject.webp) {
       return {
         type: "webp",
-        src: imageObject.webp
+        src: imageObject.webp,
+        url: imageObject.url
       }
 
     }
     return {
       type: "gif",
-      src: imageObject.url
+      src: imageObject.url,
+      url: imageObject.url,
     }
   }
 }
