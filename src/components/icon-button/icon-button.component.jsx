@@ -50,17 +50,17 @@ const IconButton = ({ message, handleClick }) => {
 
             {
                 !state.showMessage ?
-                    <button className={classes.button}>
+                    <div className={classes.buttonContent}>
                         <img src={shareIcon} alt="" className={classes.icon} />
                         <span>Share</span>
-                    </button>
+                    </div>
                     :
-                    <button className={classes.button}>
-                        <span>{message}</span>
-                    </button>
+                    <div className={classes.buttonContent}>
+                        <span className={classes.buttonAltText}>{message}</span>
+                    </div>
                     
             }
-            <button className={classes.buttonAnimation} onClick={() => setTimeout(handleClickAndBlur, 500)} ref={ref}/>
+            <button className={classes.buttonAnimation} onClick={handleClickAndBlur} ref={ref}/>
         </div>
     )
 };

@@ -4,6 +4,7 @@ import { getSource } from '../../utils/utils.js';
 import useStyles from './modal.styles.js'
 
 import IconButton from '../icon-button/icon-button.component';
+import User from '../user/user.component';
 
 const Modal = ({ handleClose, open, source }) => {
 
@@ -28,7 +29,17 @@ const Modal = ({ handleClose, open, source }) => {
                     }
                     <div className={classes.info}>
                         <h3>{source.title}</h3>
-                        <IconButton handleClick={handleClickShare} message="Copied!"/>
+                        {
+                            source.user ?
+                                <User user={source.user} />
+                                :
+                                <div className={classes.nonUser}>
+                                    <h5 className={classes.subtitle}>Source</h5>
+                                    <h5 className={classes.source}><a target="_blank" rel="noreferrer" href={source.source}>{source.source}</a></h5>
+                                </div>
+
+                        }
+                        <IconButton handleClick={handleClickShare} message="Copied!" />
                     </div>
 
                 </div>

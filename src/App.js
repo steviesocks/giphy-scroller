@@ -5,8 +5,9 @@ import Search from './components/search/search.component';
 import Modal from './components/modal/modal.component';
 
 import { getAPI } from './utils/api';
+import ArrowButton from './components/up-button/up-button.component';
 
-const INITIAL_MODAL_STATE = {images: {original: {}}}
+const INITIAL_MODAL_STATE = {images: {original: {}}, user: {}}
 const TRENDING_ENDPOINT = `https://api.giphy.com/v1/gifs/trending?api_key=KU304SCxltM7TA3lecV28vBV0Rv4A5XE&limit=9`
 const SEARCH_ENDPOINT = `https://api.giphy.com/v1/gifs/search`
 
@@ -70,7 +71,7 @@ const App = () => {
 
   useEffect(() => {
     getAPI(TRENDING_ENDPOINT)
-            .then(response => setGifs([...response.data]))
+            .then(response => setGifs(response.data))
             .catch(error => console.log(error))
 
     offset.current = 9
@@ -95,6 +96,7 @@ const App = () => {
           }
         handleGifClick={handleGifClick}
       />
+      {/* <ArrowButton /> */}
       <Modal handleClose={handleModalClose} open={modalOpen} source={modalContent} />
     </div>
   );

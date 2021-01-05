@@ -1,20 +1,18 @@
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
-    button: {
+    buttonContent: {
         height: '30px',
-        width: '80px',
-        backgroundColor: 'unset',
-        border: 'unset',
+        width: '68px',
         color: 'white',
         fontWeight: 'bold',
+        font: '400 13.3333px Arial',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         borderRadius: '5px',
-        '&:focus': {
-            outline: 'unset'
-        },
+        padding: '1px 6px',
+        textAlign: 'center'
     },
     'buttonAnimation': {
         backgroundColor: 'unset',
@@ -31,7 +29,11 @@ const useStyles = createUseStyles({
         '&:focus': {
             animation: `$click .5s ease`,
             outline: 'unset'
-        }
+        },
+        transition: 'background-color .15s ease'
+    },
+    buttonAltText: {
+        width: '100%',
     },
     icon: {
         height: '20px'

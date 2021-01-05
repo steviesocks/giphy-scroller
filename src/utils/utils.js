@@ -14,24 +14,26 @@ export const debounce = (func, wait) => {
 
 export const getSource = (imageObject) => {
   if (imageObject) {
+    const { url } = imageObject;
     if (imageObject.mp4) {
       return {
         type: "mp4",
         src: imageObject.mp4,
-        url: imageObject.url
+        url
       }
     } else if (imageObject.webp) {
       return {
         type: "webp",
         src: imageObject.webp,
-        url: imageObject.url
+        url
       }
 
     }
     return {
       type: "gif",
       src: imageObject.url,
-      url: imageObject.url,
+      url
     }
   }
 }
+

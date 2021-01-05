@@ -29,6 +29,20 @@ const useStyles = createUseStyles({
     },
     info: {
         textAlign: 'left',
+    },
+    nonUser: {
+        
+    },
+    subtitle: {
+        margin: '5px 0',
+        opacity: '.6'
+    },
+    source: {
+        margin: '0 0 20px 0',
+        maxWidth: '300px',
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis',
     }    
 });
 
