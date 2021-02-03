@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/giphy-scroller/static/css/main.808556f6.chunk.css",
+    "main.js": "/giphy-scroller/static/js/main.bd894760.chunk.js",
+    "main.js.map": "/giphy-scroller/static/js/main.bd894760.chunk.js.map",
+    "runtime-main.js": "/giphy-scroller/static/js/runtime-main.e18e0b34.js",
+    "runtime-main.js.map": "/giphy-scroller/static/js/runtime-main.e18e0b34.js.map",
+    "static/js/2.16a283ff.chunk.js": "/giphy-scroller/static/js/2.16a283ff.chunk.js",
+    "static/js/2.16a283ff.chunk.js.map": "/giphy-scroller/static/js/2.16a283ff.chunk.js.map",
+    "static/js/3.010e5b16.chunk.js": "/giphy-scroller/static/js/3.010e5b16.chunk.js",
+    "static/js/3.010e5b16.chunk.js.map": "/giphy-scroller/static/js/3.010e5b16.chunk.js.map",
+    "index.html": "/giphy-scroller/index.html",
+    "static/css/main.808556f6.chunk.css.map": "/giphy-scroller/static/css/main.808556f6.chunk.css.map",
+    "static/js/2.16a283ff.chunk.js.LICENSE.txt": "/giphy-scroller/static/js/2.16a283ff.chunk.js.LICENSE.txt",
+    "static/media/arrowIcon.061ed20d.svg": "/giphy-scroller/static/media/arrowIcon.061ed20d.svg",
+    "static/media/closeIcon.1d40ed26.svg": "/giphy-scroller/static/media/closeIcon.1d40ed26.svg",
+    "static/media/searchIcon.bdfbdd2d.svg": "/giphy-scroller/static/media/searchIcon.bdfbdd2d.svg",
+    "static/media/shareIcon-white.8390b8f2.svg": "/giphy-scroller/static/media/shareIcon-white.8390b8f2.svg",
+    "static/media/verifiedIcon.f17e883f.svg": "/giphy-scroller/static/media/verifiedIcon.f17e883f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e18e0b34.js",
+    "static/js/2.16a283ff.chunk.js",
+    "static/css/main.808556f6.chunk.css",
+    "static/js/main.bd894760.chunk.js"
+  ]
+}
